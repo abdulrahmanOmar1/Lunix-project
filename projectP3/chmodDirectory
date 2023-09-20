@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+if [[ ($1 -gt 0)&&($1 -lt 777) ]]
+then
+	
+	for i in $2/*
+	do
+	if [ -d $i ] 
+	then
+	echo Hallo
+	chmod $1 $i
+	fi
+		
+		
+	done
+fi
+
+

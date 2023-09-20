@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -d $1 ]
+then
+	num=$(ls $1|wc -l)
+	if [ $num -gt 0 ] 
+	then
+		find $1 -type d -empty
+	else
+	echo "There is no empity directoey "
+	fivi 
+else
+	echo $1 There is not the directory
+	fi

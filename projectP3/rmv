@@ -1,0 +1,53 @@
+#!/bin/bash
+v1=0
+v2=0
+
+
+
+for i in $*
+do
+((v1++))
+	if [ $v1 -eq 1 ]
+	then
+		continue
+	else
+	for j in $i/*
+	do
+		if [ -f $j ]
+		then
+		
+		
+			g=$(echo $j|cut -d/ -f2)
+			
+			if [ $g = $1 ] 
+			then
+				chmod -x $j
+				v2=1
+			fi
+		
+		
+		fi 
+	done
+	
+	
+	fi
+done
+
+
+if [ $v2 -eq 1 ]
+then
+echo Remove x from $1 is finish
+	echo Remove x from $1 is finish>>ST 
+else
+	echo can not remove x from $1  it is not exit on $2
+	echo can not remove x from $1  it is not exit  $2>>ST
+	
+	fi
+	
+	
+	
+	
+	
+	
+	
+	

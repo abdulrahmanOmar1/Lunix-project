@@ -1,0 +1,36 @@
+#!/bin/bash
+
+
+if [ $# -ne 2 ]
+then
+	echo "Error;there is more than 2 argumant !"
+	echo "Error; there is more than 2 argumant !">SD
+exit 
+fi
+
+if [ -f $1 ]
+then
+	echo Error:not a directory 
+	echo Error:not a directory >>ST
+fi
+
+
+count=0
+for i in $1/*
+do
+	v=$(echo $i|cut -d/ -f2)
+	for j in $2/*
+	do
+		v1=$(echo $j|cut -d/ -f2)
+		if [ "$v" = "$v1" ]
+		then
+		((count++))
+			echo $v>>print
+		fi
+	done
+
+done	
+
+echo this files appear in the directory $1 and $2 : $count
+more print
+echo >print

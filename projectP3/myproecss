@@ -1,0 +1,153 @@
+#!/bin/bash
+
+
+var=$(welcome)
+echo $var morad 
+
+echo Please choose of the following options:
+	echo Directions:
+		echo 1 create a directory for all users
+		echo 2 change permission for all directory
+		echo 3  print all empity directories
+		
+	echo FIles
+		echo 4 change permission for all files
+		echo 5 compare files
+		echo 6  delete duplicated files
+		
+	echo Report 
+		echo 7 count and display all files that contain the same word
+		echo 8  count the number of files that have the same name inside diffrent directory
+		echo 9 print all empty files
+		
+	echo exit
+	
+	read num
+	if [ $num -eq 1 ] 
+	then
+	mkdirr
+	exit 0
+	
+	
+	elif [ $num -eq 2 ] 
+	then
+	echo Please enter permission and directory
+	read per 
+	read dir
+	chmodDirectory $per $dir
+	echo Done
+	
+	elif [ $num -eq 3 ] 
+	then
+	printEmDirectory
+	echo "Done"
+	
+	
+	elif [ $num -eq 4 ] 
+	then
+	echo Please enter file name
+	read namef
+	if [ -d $namef ]
+	then
+		echo "Error!" >>ST
+		exit 2
+	
+	else 
+	echo Please enter number of directroy
+	read dirNum
+	count=0
+	while [ $count -lt $dirNum ]
+	do
+		echo Please enter dirctory
+		read dirctoryN
+		rmv $namef $dirctoryN
+		((count++))
+	done
+	fi
+	
+	elif [ $num -eq 5 ]
+	then
+		echo Please enter 2 files
+		read f1
+		read f2
+		cmpr $f1 $f2
+	elif [ $num -eq 6 ]
+	then
+		echo Please enter 2 directory 
+		read d1 
+		read d2
+		deletedipl $d1 $d2
+	elif [ $num -eq 7 ] 
+	then
+		echo Enter the name of word 
+		read nameWord
+		echo Enter the number of directory
+		read dirNumber
+
+		if [ $dirNumber -gt 8 ]
+		then
+			echo "Oops! more than 8 directory">>SD
+			echo "Oops! more than 8 directory"
+		else
+			counter=0
+			while [ $counter -lt $dirNumber ]
+			do
+				echo "Enter directory name": $counter
+				read director
+		var=$(SameWord $nameWord $director)
+		echo $var
+				((counter++))
+			done
+			
+			more print
+			echo >print
+			
+		fi
+			
+
+	elif [ $num -eq 8 ]
+	then
+	echo Please enter 2 directory
+	read directory1 
+	read directory2
+	CounterN directory1 directory2
+	elif [ $num -eq 9  ]
+	then
+	echo please enter number of directory
+	read n 
+	if [ $n -gt 9 ]
+	then
+		echo "Oops! it is more 9 directory">>SD
+	else
+	j=0
+	while  [ $j -lt $n ]
+	do
+	
+		echo Enter name of directory
+		read directory2 
+		printEmfiles $directory2
+		((j++))
+	done
+	more print
+	echo >print
+	fi
+		
+		
+		
+	else
+	more exit
+	fi
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

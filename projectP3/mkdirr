@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+for i in $( cat pro_passwd)
+do
+
+
+		v=$(echo $i |cut -d: -f5|cut -c1)
+		v2=$(echo $i |cut -d: -f5|cut -d_ -f2)
+		mm=$(echo $i |cut -d: -f6)
+		mm=$(echo $mm/$v$v2)
+	
+		mkdir -p  .$mm
+		
+		
+	
+	
+	
+done 
+
+echo  Done

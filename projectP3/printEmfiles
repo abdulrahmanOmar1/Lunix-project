@@ -1,0 +1,22 @@
+#!/bin/bash
+if [ $# -gt 9 ]
+then
+	echo "Error! There is grated than 9"
+fi
+
+	for i in  $*
+	do
+		for j in $i/*
+		do
+			v=$(cat $j|wc -l)
+			if [ $v -eq 0 ]
+			then
+			v2=$(echo $j|cut -d/ -f2)
+				echo $v2>>print
+			fi
+		done
+	done
+	
+	
+
+

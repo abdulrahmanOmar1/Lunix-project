@@ -1,0 +1,46 @@
+#!/bin/bash
+num=0
+
+if [ $# -gt 8 ] 
+then
+	echo "is more than 8 directory" >>ST
+	echo "is more than 8 directory"
+	exit
+fi
+h=0	
+for i in $*
+do 
+((num++))
+if [ $num -eq 1 ] 
+then
+	continue
+else
+	if [ -d $i ]
+	then
+	
+	
+	for j in $i/*
+	do 
+		v=$(cat $j|grep -n $1|cut -d: -f1)
+		if [[ $v -gt 0 ]]
+		then
+		((h++))
+		echo $j:$v
+			echo $j:$v>>print
+			
+		
+		fi
+	done
+	
+	else
+	echo $i "error; it is not a directory">>ST
+	echo $i "error; it is not a directory"
+	fi
+	
+	
+	
+fi
+done
+
+
+

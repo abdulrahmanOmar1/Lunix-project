@@ -1,0 +1,14 @@
+#!/bin/bash
+v=$(echo $(date) |cut -d ' ' -f5 |cut -d: -f1)
+
+if [[  ($v -gt 5) && ($v -lt 12) ]]
+then 
+	echo "good morning " 
+elif [[ ($v -gt 12) && ($v -lt 18) ]] 
+then
+	echo " good afternon "
+else
+	echo "good evning"
+fi
+
+
